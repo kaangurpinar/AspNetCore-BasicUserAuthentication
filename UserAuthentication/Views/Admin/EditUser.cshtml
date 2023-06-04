@@ -1,0 +1,53 @@
+﻿@model UserViewModel
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h1>Edit User</h1>
+
+<h4>App User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditUser">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender"></label>
+                <input asp-for="Gender" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDay" class="control-label"></label>
+                <input asp-for="BirthDay" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender"></label>
+                <select asp-for="Gender" class="form-control"
+                        asp-items="Html.GetEnumSelectList<Gender>()"></select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

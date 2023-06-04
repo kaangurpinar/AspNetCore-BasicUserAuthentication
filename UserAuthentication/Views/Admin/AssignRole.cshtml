@@ -1,0 +1,36 @@
+﻿@model List<RoleViewModel>
+
+<h1>Role Assign</h1>
+
+<form asp-action="AssignRole" asp-controller="Admin">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Role Name
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td><input type="checkbox" asp-for="@Model[i].HasRole" /> </td>
+                    <td>
+                        @Model[i].Name
+                        <input type="hidden" asp-for="@Model[i].Id" />
+                        <input type="hidden" asp-for="@Model[i].Name" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+
+</form>
